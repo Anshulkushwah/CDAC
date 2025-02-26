@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+// Use macro 
+// #define SWAP(a, b) { int temp = a; a = b; b = temp; }
+
+// // Function to swap values of two integers
+// void swap(int *x, int *y) {
+//     int temp = *x;
+//     *x = *y;
+//     *y = temp;
+// }
+
+// int main()
+// {
+//     int a = 1;
+//     int b = 2;
+    
+//     printf("Value A: %d\n", a);
+//     printf("Value B: %d\n", b);
+
+//     SWAP(a,b);
+    
+//     printf("After swapping:\n");
+    
+//     printf("Value A: %d\n", a);
+//     printf("Value B: %d\n", b);
+
+//     return 0;
+// }
+
+// ----------------------------------------------------
+
+#include <stdio.h>
+
+int main() {
+    int a = 5;
+    int b = 11;
+    
+    printf("Before swapping:\n");
+    printf("Value A: %d\n", a);
+    printf("Value B: %d\n", b);
+
+    // Swap using addition and subtraction
+    a = a + b;  // a becomes 5 + 11 = 16
+    b = a - b;  // b becomes 16 - 11 = 5 (original value of a)
+    a = a - b;  // a becomes 16 - 5 = 11 (original value of b)
+
+    printf("After swapping:\n");
+    printf("Value A: %d\n", a);
+    printf("Value B: %d\n", b);
+
+    return 0;
+}
