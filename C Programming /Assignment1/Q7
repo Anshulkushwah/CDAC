@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+void incrementCounterstatic() {
+    static int counter = 0;  // Static variable, initialized only once
+    counter++;
+    printf("Static Counter value: %d\n", counter);
+}
+
+void incrementCounter() {
+    int counter = 0;  // Regular variable, reinitialized each time the function is called
+    counter++;
+    printf("Counter value: %d\n", counter);
+}
+
+int main() {
+    printf("Static Counter : \n");
+    incrementCounterstatic();  // First call: Counter value will be 1
+    incrementCounterstatic();  // Second call: Counter value will be 2
+    incrementCounterstatic();  // Third call: Counter value will be 3
+    incrementCounterstatic();  // Fourth call: Counter value will be 4
+    
+    printf("Normal variable Counter : \n");
+    incrementCounter();  // First call: Counter value will be 1
+    incrementCounter();  // Second call: Counter value will be 1 (reinitialized)
+    incrementCounter();  // Third call: Counter value will be 1 (reinitialized)
+    incrementCounter();  // Fourth call: Counter value will be 1 (reinitialized)
+
+    return 0;
+}
