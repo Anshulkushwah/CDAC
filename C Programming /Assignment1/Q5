@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main()
+{
+    int a = 1, b=2, c=3, d=4, e= 5;
+    printf("A: %d ", a); 
+    printf("A: %d ", b); 
+    printf("A: %d ", c); 
+    printf("A: %d ", d); 
+    printf("A: %d\n", e); 
+    
+    printf("A: %d\n", a); 
+    printf("A: %d\n", b); 
+    printf("A: %d\n", c); 
+    printf("A: %d\n", d); 
+
+    return 0;
+}
