@@ -1,0 +1,17 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a = 10, b=5, c=2, result;
+    result = a + b * c;
+    printf(" a + b * c : %d\n",result);
+    
+    result = (a + b) * c;
+    printf(" (a + b) * c : %d\n",result);
+    
+    result = a + b - c * 3/2;
+    printf(" a + b - c * 3/2 : %d",result);
+    
+
+    return 0;
+}
