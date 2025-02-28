@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+int main() {
+    char operation;
+    int a, b;
+    
+    printf("Enter a number: \n");
+    scanf("%d", &a);  // Fix: Use & to get the address of a
+
+    printf("Give Command What You Want (+, -, *, /): ");
+    scanf(" %c", &operation);  // Fix: Add a space before %c to consume the newline character
+
+    printf("Enter another number: \n");
+    scanf("%d", &b);  // Fix: Use & to get the address of b
+    
+    // Performing the operation
+    switch (operation) {
+        case '+':
+            printf("Result: %d\n", a + b);
+            break;
+        case '-':
+            printf("Result: %d\n", a - b);
+            break;
+        case '*':
+            printf("Result: %d\n", a * b);
+            break;
+        case '/':
+            if (b != 0) {
+                printf("Result: %f\n", (float)a / b);  // For division, show result as float
+            } else {
+                printf("Error! Division by zero.\n");
+            }
+            break;
+        default:
+            printf("Invalid operation!\n");
+    }
+
+    return 0;
+}
+
+
+
+// The space before %c in the scanf format string is needed to handle a common issue with the scanf function when reading a char after a previous input (such as reading integers). Here's why:
+
+// Problem with scanf and Newline Characters
+// When you use scanf to read an integer or another type of data (such as scanf("%d", &a)), it leaves a newline character (\n) in the input buffer. This happens because when the user presses Enter after entering the number, the newline character is left behind in the input buffer.
+
+// If you immediately use scanf to read a character (scanf("%c", &operation)), it will pick up this leftover newline character (\n) from the buffer as its input, instead of waiting for the user to input a character.
+
+// Solution: The Space Before %c
+// By placing a space before %c in the scanf(" %c", &operation);, you tell scanf to skip any whitespace characters (spaces, newlines, tabs, etc.) that are in the input buffer before reading the actual character. This includes any stray newline characters that might have been left from previous input.
+
+// Example:
+// Without the space:
+// c
+// Copy
+// scanf("%d", &a);  // User inputs 10, Enter key is pressed (newline \n remains in buffer)
+// scanf("%c", &operation);  // The newline \n is read as input for operation
+// Here, operation would be assigned the value \n instead of the character the user wants to input.
+
+// With the space:
+// c
+// Copy
+// scanf("%d", &a);  // User inputs 10, Enter key is pressed (newline \n remains in buffer)
+// scanf(" %c", &operation);  // The space before %c skips the leftover newline
+// Now, scanf will skip over any unwanted newline characters (or other whitespace) and wait for the user to input a character.
+
+// Summary:
+// The space before %c ensures that scanf skips any whitespace characters (such as newline characters) that may still be in the input buffer, allowing the user to input the intended character.
+// Without the space, scanf("%c", &operation); might inadvertently read the leftover newline character, leading to unexpected behavior.
+// This is a common pitfall when using scanf in C for mixed data input (e.g., reading integers followed by characters).
