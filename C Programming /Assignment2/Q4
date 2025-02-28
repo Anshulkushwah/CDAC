@@ -1,0 +1,31 @@
+
+#include <stdio.h>
+
+int main() {
+
+    int a = 10, b = 5;
+    int c = 0, d = 7;
+    
+    // Logical AND (&&)
+    printf("Logical AND (&&) Examples:\n");
+    printf("a && b: %d\n", a && b);  // Expected: 1 (true) because both a and b are non-zero
+    printf("c && b: %d\n", c && b);  // Expected: 0 (false) because c is zero
+    printf("c && d: %d\n", c && d);  // Expected: 0 (false) because c is zero
+    printf("\n");
+
+    // Logical OR (||)
+    printf("Logical OR (||) Examples:\n");
+    printf("a || b: %d\n", a || b);  // Expected: 1 (true) because at least one of a or b is non-zero
+    printf("c || b: %d\n", c || b);  // Expected: 1 (true) because b is non-zero
+    printf("c || d: %d\n", c || d);  // Expected: 1 (true) because d is non-zero
+    printf("\n");
+    
+    // Bitwise XOR (^)
+    printf("Bitwise XOR (^) Examples:\n");
+    int x = 12;  // Binary: 1100
+    int y = 5;   // Binary: 0101
+
+    printf("x ^ y: %d\n", x ^ y);  // Expected: 9 (binary: 1001)
+
+    return 0;
+}
