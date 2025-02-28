@@ -1,0 +1,17 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a = 0;
+    printf("Before : %d\n",a);
+    printf("Now ++a is  : %d\n",++a);
+    printf("After : %d\n",a);
+    a = 0;
+    printf("Before : %d\n",a);
+    printf("Now a++ is %d\n",a++);
+    printf("After : %d\n",a);
+    
+    
+
+    return 0;
+}
