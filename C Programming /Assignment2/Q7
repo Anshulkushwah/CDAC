@@ -1,0 +1,30 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a = 10;
+    int b = 3;
+    
+    float result1, result2, result3, result4;
+    
+    int intresult = a/b;
+    printf("Integer division (10/3) : %d\n", intresult);
+    
+    result1 = a/(float)b;
+    printf("Floatin point division a/(float)b : %2f\n", result1);
+    
+    result2 = (float)a/b;
+    printf("Floatin point division (float)a/b : %2f\n", result2);
+    
+    result3 = (float)a/(float)b;
+    printf("Floatin point division (float)a/(float)b : %2f\n", result3);
+    
+    float x = 10.00;
+    float y = 3.01;
+    result4 = x/y;
+    printf("Floatin point division 10.00/3.01 : %2f\n", result4);
+    
+    
+
+    return 0;
+}
