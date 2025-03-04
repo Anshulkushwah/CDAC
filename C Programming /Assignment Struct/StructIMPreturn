@@ -1,0 +1,43 @@
+// Integer Type: Functions can return an integer value using int type. For example, a function that returns the sum of two integers.
+
+int add(int a, int b) {
+    return a + b;
+}
+// Floating Point Type: Functions can return floating-point numbers using float or double types. For example, a function that calculates the area of a circle.
+
+
+double calculateArea(double radius) {
+    return 3.14159 * radius * radius;
+}
+// Character Type: Functions can return single characters using char type. For example, a function that returns the first character of a string.
+
+
+char getFirstChar(char str[]) {
+    return str[0];
+}
+// Void Type: Functions can return nothing (no value) using void type. These functions are often used for performing actions rather than returning a value. For example, a function that prints a message.
+
+
+void printMessage() {
+    printf("Hello, World!\n");
+}
+// Pointer Type: Functions can return pointers to different types, such as pointers to integers, characters, structures, etc. For example, a function that returns a pointer to an integer.
+
+
+int* getPointerToInt(int *value) {
+    return value;
+}
+// Structure Type: Functions can return structures. For example, a function that returns a structure representing a point in a 2D space.
+
+
+struct Point {
+    int x;
+    int y;
+};
+
+struct Point createPoint(int x, int y) {
+    struct Point p;
+    p.x = x;
+    p.y = y;
+    return p;
+}
