@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class TernaryOprator {
+	
+	public static void main(String[] arg) {
+		int data;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("Enter a number : ");
+		data = scan.nextInt();
+		
+		System.out.println(data % 2 == 0 ? "Even" : "Odd");
+
+	}
+
+}
