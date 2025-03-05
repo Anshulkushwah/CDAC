@@ -1,0 +1,14 @@
+
+public class StaticValue {
+	int instanceVar = 10;
+	static int staticVar = 5;
+	
+	public static void main(String[] arg) {
+		
+		StaticValue obj = new StaticValue();
+		System.out.println("obj.instanceVar : "+obj.instanceVar);
+		System.out.println("obj.instanceVar : "+StaticValue.staticVar);
+		
+	}
+
+}
