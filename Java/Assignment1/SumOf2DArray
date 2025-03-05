@@ -1,0 +1,35 @@
+
+public class SumOf2DArray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        // Define a 2D array with sample data
+        int[][] array = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        // Call the method to calculate the sum of the 2D array
+        int sum = sumOf2DArray(array);
+
+        // Print the result
+        System.out.println("Sum of all integers in the 2D array: " + sum);
+    }
+
+    // Method to sum all integers in a 2D array
+    public static int sumOf2DArray(int[][] array) {
+        int sum = 0;
+
+        // Loop through each row
+        for (int i = 0; i < array.length; i++) {
+            // Loop through each column in the current row
+            for (int j = 0; j < array[i].length; j++) {
+                sum += array[i][j];  // Add the current element to sum
+            }
+        }
+
+        return sum;
+    }
+
+}
