@@ -1,0 +1,38 @@
+
+public class ImlicitExplicit {
+
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		byte byteValue = 10;   // 1 byte
+//        short shortValue = byteValue;  
+//        int intValue = shortValue;     
+//        long longValue = intValue;     
+//        float floatValue = longValue;  
+//        double doubleValue = floatValue;
+//        
+//        System.out.println("Implicit Typecasting : ");
+//        System.out.println("Byte: " + byteValue);
+//        System.out.println("Short: " + shortValue);
+//        System.out.println("Int: " + intValue);
+//        System.out.println("Long: " + longValue);
+//        System.out.println("Float: " + floatValue);
+//        System.out.println("Double: " + doubleValue);
+//
+//	}
+
+	
+	public static void main(String[] args) {
+        double doubleValue = 9.99;  
+        int intValue = (int) doubleValue;  
+        long longValue = (long) doubleValue; 
+        short shortValue = (short) doubleValue;  
+        byte byteValue = (byte) doubleValue;  
+        
+        System.out.println("Explicit Typecasting : ");
+        System.out.println("Double: " + doubleValue);
+        System.out.println("Int: " + intValue);
+        System.out.println("Long: " + longValue);
+        System.out.println("Short: " + shortValue);
+        System.out.println("Byte: " + byteValue);
+    }
+}
