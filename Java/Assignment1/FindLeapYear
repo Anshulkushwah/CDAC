@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class FindLeapYear {
+    
+    public static void main(String args[]) {
+        System.out.print("Enter any year and check Leap year or not: ");
+        
+        Scanner scan = new Scanner(System.in);
+        
+        int year = scan.nextInt();
+        
+        // Check for leap year using modulus (%) operator
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            System.out.println("This is a Leap year");
+        } else {
+            System.out.println("This is NOT a Leap year");
+        }
+        
+        scan.close();
+    }
+}
