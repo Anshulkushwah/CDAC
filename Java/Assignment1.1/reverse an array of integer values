@@ -1,0 +1,33 @@
+
+public class Q13 {
+	public static void main(String[] args) {
+   
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7};
+        
+       
+        System.out.println("Original Array:");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+        
+        // Reverse the array
+        int start = 0;
+        int end = numbers.length - 1;
+        while (start < end) {
+            // Swap the elements at start and end
+            int temp = numbers[start];
+            numbers[start] = numbers[end];
+            numbers[end] = temp;
+            
+            // Move the start and end indices towards each other
+            start++;
+            end--;
+        }
+        
+        
+        System.out.println("\nReversed Array:");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+    }
+}
