@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Q5 {
+	    public static void main(String[] args) {
+	        // Create a Scanner object to take input from the user
+	        Scanner scanner = new Scanner(System.in);
+	        
+	        // Ask the user to input Principal Amount (P)
+	        System.out.print("Enter the principal amount: ");
+	        double principal = scanner.nextDouble();
+	        
+	        // Ask the user to input Rate of Interest (R)
+	        System.out.print("Enter the rate of interest: ");
+	        double rate = scanner.nextDouble();
+	        
+	        // Ask the user to input Time Period (T)
+	        System.out.print("Enter the time period (in years): ");
+	        double time = scanner.nextDouble();
+	        
+	        // Calculate the Simple Interest
+	        double simpleInterest = (principal * rate * time) / 100;
+	        
+	        // Output the result
+	        System.out.println("The Simple Interest is: " + simpleInterest);
+	        
+	        // Close the scanner
+	        scanner.close();
+	    }
+}
