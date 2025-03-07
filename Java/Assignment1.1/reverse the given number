@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class Q3 {
+
+	   public static void main(String[] args) {
+	        // Create a Scanner object to take input
+	        Scanner scanner = new Scanner(System.in);
+	        
+	        // Ask the user to input a number
+	        System.out.print("Enter a number: ");
+	        int number = scanner.nextInt();
+	        
+	        // Variable to store the reversed number
+	        int reversedNumber = 0;
+	        
+	        // Process the number to reverse it
+	        while (number != 0) {
+	            // Extract the last digit of the number
+	            int digit = number % 10;
+	            
+	            // Add the digit to the reversed number
+	            reversedNumber = reversedNumber * 10 + digit;
+	            
+	            // Remove the last digit from the number
+	            number /= 10;
+	        }
+	        
+	        // Print the reversed number
+	        System.out.println("The reversed number is: " + reversedNumber);
+	        
+	        // Close the scanner
+	        scanner.close();
+	    }
+
+}
