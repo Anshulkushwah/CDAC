@@ -1,0 +1,21 @@
+
+public class Q14 {
+	
+	public static void main(String arg) {
+		int[] numbers = {19, 22, 36, 14, 5, 96, 17};
+		int L1 = Integer.MIN_VALUE;
+        int L2 = Integer.MIN_VALUE;
+		
+		for(int i = 0; i<numbers.length; i++) {
+			if(numbers[i]>L1) {
+				L2=L1;
+				L1 = numbers[i];
+			}else if (numbers[i] > L2 && numbers[i] != L1) {
+                L2 = numbers[i];  
+            }
+        }
+
+        System.out.println("The second largest number is: " + L2);
+	}
+
+}
