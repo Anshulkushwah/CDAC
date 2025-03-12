@@ -1,0 +1,41 @@
+Assignment on has a relation
+Problem 1: Car and Engine Relationship 🚗⚙️
+Problem Statement:
+Create a Java program where a Car "has-a" Engine. The Car class should contain an Engine object as an instance variable.
+
+Properties:
+Car Class
+
+brand (String)
+model (String)
+engine (Engine object)
+startCar() (Method that starts the car and calls startEngine())
+
+
+Engine Class
+
+engineType (String)
+horsePower (int)
+startEngine() (Method that prints "Engine started")
+
+
+Problem 2: Library and Book Relationship 📚🏛️
+Problem Statement:
+Design a Java program where a Library "has-a" collection of Books. The Library class should maintain a list of Book objects.
+
+Properties:
+Library Class
+
+name (String)
+address (String)
+books (List of Book objects)
+addBook(Book book) (Method to add a book)
+displayBooks() (Method to display all books)
+searchBook(String title) (Method to find a book by title)
+
+
+Book Class
+
+title (String)
+author (String)
+isbn (String)
