@@ -1,0 +1,16 @@
+Abstract Class Problems
+Problem: Vehicle Management System
+
+A transportation company has different types of vehicles such as Car, Bike, and Truck. Each vehicle has attributes like speed, fuelCapacity, and mileage, but the method of calculating fuel efficiency differs for each vehicle type. Create an abstract class Vehicle with an abstract method calculateFuelEfficiency(). Implement concrete subclasses Car, Bike, and Truck with specific fuel efficiency calculation logic.
+
+Problem: Employee Management System
+
+A company has different types of employees: FullTimeEmployee and ContractEmployee. Both types of employees have common attributes such as name, employeeId, and salary, but the way they calculate their salary differs. Create an abstract class Employee with abstract methods like calculateSalary(). Implement concrete subclasses FullTimeEmployee and ContractEmployee with specific salary calculation logic.
+
+Interface Problems
+Problem: Multiple Payment Modes
+
+An e-commerce platform supports multiple payment modes such as CreditCard, DebitCard, and UPI. Each payment mode should have methods for processPayment(double amount) and validatePayment(). Design an interface PaymentGateway with these methods and implement it in different payment classes.
+Problem: Smart Home Devices
+
+In a smart home automation system, different devices like SmartLight, SmartFan, and SmartAC need to be controlled remotely. Each device should have operations like turnOn(), turnOff(), and adjustSettings(). Design an interface SmartDevice and implement it in different smart home device classes.
