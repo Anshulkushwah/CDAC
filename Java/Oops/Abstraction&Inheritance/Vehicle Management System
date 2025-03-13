@@ -1,0 +1,4 @@
+Abstract Class Problems
+Problem: Vehicle Management System
+
+A transportation company has different types of vehicles such as Car, Bike, and Truck. Each vehicle has attributes like speed, fuelCapacity, and mileage, but the method of calculating fuel efficiency differs for each vehicle type. Create an abstract class Vehicle with an abstract method calculateFuelEfficiency(). Implement concrete subclasses Car, Bike, and Truck with specific fuel efficiency calculation logic.
