@@ -1,0 +1,3 @@
+Problem: Employee Management System
+
+A company has different types of employees: FullTimeEmployee and ContractEmployee. Both types of employees have common attributes such as name, employeeId, and salary, but the way they calculate their salary differs. Create an abstract class Employee with abstract methods like calculateSalary(). Implement concrete subclasses FullTimeEmployee and ContractEmployee with specific salary calculation logic.
