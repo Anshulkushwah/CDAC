@@ -1,0 +1,2 @@
+
+An e-commerce platform supports multiple payment modes such as CreditCard, DebitCard, and UPI. Each payment mode should have methods for processPayment(double amount) and validatePayment(). Design an interface PaymentGateway with these methods and implement it in different payment classes.
