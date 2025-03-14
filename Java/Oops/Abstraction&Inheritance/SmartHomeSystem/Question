@@ -1,0 +1,1 @@
+In a smart home automation system, different devices like SmartLight, SmartFan, and SmartAC need to be controlled remotely. Each device should have operations like turnOn(), turnOff(), and adjustSettings(). Design an interface SmartDevice and implement it in different smart home device classes.
