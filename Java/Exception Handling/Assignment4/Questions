@@ -1,0 +1,64 @@
+E xception
+1) Write a program to demonstrate the use of try, catch, finally throw and
+throws keywords and demonstrate the following points in the program.
+a) Multiple catch blocks.
+b) try-catch-finally combination.
+c) try-finally combination.
+d) Nested try blocks
+2). Write a java application for checking the bank account funds using
+InsufficientFundsException using user defined exception using throw keword
+and create a class for CheckingAccount with methods withdraw() and
+getBalance() Among these withdraw() should throw an
+InsufficientFundsException.
+Collection
+1.) Write a java program to do following operations on Array List(Integer)
+a) Add element
+b) Remove a particular element
+c) Modify
+d) View All elements(Use Iterator)
+e) View a Particular element (get() )
+f) Sort (Collections.sort)
+
+2) Write a Java menu driven program to perform the following operationsusing Array List Create a class called Player with the following instance
+variable
+
+Player name
+total run
+no of wicket
+no of matches
+country
+no-of-century
+Category = null
+* Create 5 Players add into the Array List
+* Display the player details who has scored maximum no of runs
+* Sort the players by name
+* Remove the player who has scored less than 100 runs
+* Update Category ‘A’ if player has got 10 century else update Grade ‘ B’
+
+
+3.Write a java program to do push, pop , display objects on stacks(integer).
+4.Implement single linked list(Integer) with following options:
+a. Insert at the beginning.
+b. Insert at given position.
+c. Insert after a given node.
+d. Delete at the beginning.
+e. Delete at given position.
+f. Delete after a given node.
+g. Reverse the linked list.
+2) Write a Java program menu driven to perform the following operations
+using Map
+* Create a class called Book with the following instance variable
+name
+price
+author name
+isbn no;
+publication
+* Create 5 Objects of book class
+* Add all the object in to the Map using key as integer(book id) and value as
+Book Object
+* Display all the map object using for each
+* Read any key from the user and display the particular book object based
+on key
+* Reduce the price by 10% for a particular publication books and display all
+object with reduced price.
+
