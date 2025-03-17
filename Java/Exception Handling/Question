@@ -1,0 +1,126 @@
+In Java, the try, catch, and finally blocks are used for exception handling. They allow you to handle runtime errors, ensuring that your program can recover from exceptions or at least provide meaningful error messages. Here's how each part works:
+
+try block
+The try block is used to enclose the code that might throw an exception.
+If an exception occurs in the try block, the rest of the code in the block is skipped, and control moves to the catch block (if present).
+catch block
+The catch block is used to handle exceptions that occur in the try block.
+It catches the exception and allows you to handle it, either by logging it, printing a message, or taking corrective action.
+finally block
+The finally block contains code that will always execute, whether an exception is thrown or not.
+It is typically used for cleanup activities, such as closing file streams, releasing resources, or closing database connections.
+Basic Syntax:
+java
+Copy
+try {
+    // Code that might throw an exception
+} catch (ExceptionType1 e1) {
+    // Code to handle ExceptionType1
+} catch (ExceptionType2 e2) {
+    // Code to handle ExceptionType2
+} finally {
+    // Code that always runs, regardless of whether an exception was thrown or not
+
+
+
+In Java, throw and throws are two distinct keywords related to exception handling, but they serve different purposes. Let's explore the difference between throw and throws.
+
+1. throw (Used to throw an exception)
+Purpose: The throw keyword is used to actually throw an exception within a method or a block of code. When throw is used, it creates an instance of an exception and transfers control to the nearest enclosing catch block (if any) or the calling method if it is not caught.
+
+Where to use: It is used inside the method body to explicitly throw an exception.
+
+Example:
+
+java
+Copy
+public class ThrowExample {
+
+    public static void checkAge(int age) {
+        if (age < 18) {
+            // Using 'throw' to throw an exception
+            throw new IllegalArgumentException("Age must be 18 or older!");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(15);  // This will throw an IllegalArgumentException
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught exception: " + e.getMessage());
+        }
+    }
+}
+Explanation:
+The checkAge method uses throw to explicitly throw an IllegalArgumentException if the age is less than 18.
+In the main method, the exception is caught using a try-catch block.
+2. throws (Used to declare an exception)
+Purpose: The throws keyword is used to declare that a method might throw one or more exceptions. It is used in the method signature to tell the compiler and the calling code that this method may throw a specific type of exception, and the caller is responsible for handling it (either with a try-catch or by declaring it with throws again).
+
+Where to use: It is used in the method declaration to indicate that the method could throw a certain type of exception.
+
+Example:
+
+java
+Copy
+public class ThrowsExample {
+
+    // Using 'throws' to declare that this method can throw an IOException
+    public static void readFile() throws IOException {
+        FileReader file = new FileReader("nonexistentfile.txt"); // This throws IOException
+        BufferedReader fileReader = new BufferedReader(file);
+        fileReader.readLine();
+        fileReader.close();
+    }
+
+    public static void main(String[] args) {
+        try {
+            readFile();  // This will throw an IOException
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+Explanation:
+The readFile method declares that it can throw an IOException using throws.
+In the main method, the readFile method is called, and the IOException is caught using a try-catch block.
+Key Differences Between throw and throws:
+Feature	throw	throws
+Purpose	Used to throw an exception in the method body.	Used to declare that a method might throw an exception.
+Where Used	Inside the method to throw an exception.	In the method signature (method declaration).
+Syntax	throw new ExceptionType("Message");	public void methodName() throws ExceptionType;
+When to Use	When you want to explicitly throw an exception.	When you want to declare that a method may throw an exception.
+Effect	Transfers control to the nearest catch block or propagates the exception.	Forces the caller of the method to handle or propagate the exception.
+Example Combining Both throw and throws:
+java
+Copy
+import java.io.IOException;
+
+public class ThrowThrowsExample {
+
+    // Method that declares it might throw an IOException
+    public static void readFile() throws IOException {
+        // Using 'throw' to throw an exception if a file is not found
+        boolean fileExists = false;
+        if (!fileExists) {
+            throw new IOException("File not found!");
+        }
+        // Continue processing if the file exists...
+    }
+
+    public static void main(String[] args) {
+        try {
+            // Calling the readFile method that declares it throws an IOException
+            readFile();
+        } catch (IOException e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        }
+    }
+}
+Explanation:
+The readFile method declares that it may throw an IOException with throws.
+Inside the method, it explicitly throws the IOException with throw if the file does not exist.
+In the main method, the exception is caught and handled.
+Summary:
+throw: Used to actually throw an exception within the method body.
+throws: Used to declare that a method might throw an exception, indicating that the calling code should handle or propagate the exception.
