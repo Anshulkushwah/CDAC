@@ -1,0 +1,67 @@
+import java.util.Stack;
+
+
+class Person {
+    String name;
+    int age;
+    
+    public Person (String name,int age){
+        this.name = name;
+        this.age = age;
+    }
+    
+    public void display() {
+        System.out.println("Name: " + this.name);
+        System.out.println("Age: " + this.age);
+    }
+}
+
+class Main {
+    
+    
+    // public static void main(String[] args) {
+    //     Stack<Integer> stack = new Stack<>();
+    //     stack.push(1);
+    //     stack.push(2);
+    //     stack.push(3);
+    //     stack.push(4);
+    //     stack.push(5);
+        
+    //     System.out.println("Before pop : ");
+    //     for(int a : stack){
+    //         System.out.print(a+", ");
+    //     }
+        
+    //     System.out.println();
+        
+    //     stack.pop();
+    //     stack.pop();
+    //     System.out.println("After pop 2 element : ");
+    //     for(int a : stack){
+    //         System.out.print(a+", ");
+    //     }
+        
+    // }
+    
+    public static void main(String[] args){
+        
+        Person obj1 = new Person ("Anshul",19);
+        Person obj2 = new Person ("Ashish",18);
+        Person obj3 = new Person ("Vijay",32);
+        Person obj4 = new Person ("Neeraj",24);
+        Person obj5 = new Person ("Satish",25);
+        
+        Stack<Person>stack = new Stack<>();
+        
+        stack.push(obj1);
+        stack.push(obj2);
+        stack.push(obj3);
+        stack.push(obj4);
+        stack.push(obj5);
+        
+        for(Person  a : stack){
+            a.display();
+        }
+        
+    }
+}
