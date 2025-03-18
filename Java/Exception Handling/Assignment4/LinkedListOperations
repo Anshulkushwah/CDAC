@@ -1,0 +1,55 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListOperations {
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<>();
+        
+        list.addFirst(10); 
+        list.addFirst(20);
+        System.out.println("After inserting at the beginning: " + list);
+
+        // b. Insert at a given position
+        list.add(1, 15); // Inserts 15 at position 1
+        System.out.println("After inserting at position 1: " + list);
+
+        // c. Insert after a given node
+        ListIterator<Integer> iterator = list.listIterator();
+        while (iterator.hasNext()) {
+            if (iterator.next() == 15) { // Find the node with value 15
+                iterator.add(18); // Insert after the node
+                break;
+            }
+        }
+        System.out.println("After inserting after node with value 15: " + list);
+
+        // d. Delete at the beginning
+        list.removeFirst(); // Removes the first element
+        System.out.println("After deleting at the beginning: " + list);
+
+        // e. Delete at a given position
+        list.remove(1); // Removes element at position 1
+        System.out.println("After deleting at position 1: " + list);
+
+        // f. Delete after a given node
+        iterator = list.listIterator();
+        while (iterator.hasNext()) {
+            if (iterator.next() == 10) { // Find the node with value 10
+                if (iterator.hasNext()) {
+                    iterator.next(); // Move to the node after 10
+                    iterator.remove(); // Remove that node
+                }
+                break;
+            }
+        }
+        System.out.println("After deleting the node after value 10: " + list);
+
+        // g. Reverse the linked list
+        LinkedList<Integer> reversedList = new LinkedList<>();
+        for (Integer value : list) {
+            reversedList.addFirst(value); // Add elements to the beginning of a new list
+        }
+        list = reversedList; // Assign the reversed list back
+        System.out.println("After reversing the linked list: " + list);
+    }
+}
