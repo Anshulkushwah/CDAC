@@ -1,0 +1,98 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+
+public class FileHandlingIntro {
+
+
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		
+//		File obj = new File("myfile.txt");
+//        System.out.println("File Created! : "+obj);
+//
+//	}
+	
+//	1. Create a File
+
+//	public static void main(String[] args)
+//    {
+//		
+//		try {
+//				File Obj = new File("myFile.text");
+//				
+//				if(Obj.createNewFile()) {
+//					 System.out.println("File created: " + Obj.getName());
+//				}
+//	            else {
+//	                System.out.println("File already exists. "+ Obj);
+//	            }
+//		}catch (IOException e) {
+//            System.out.println("An error has occurred.");
+//            e.printStackTrace();
+//        }
+//		
+//    }
+//	
+//	2. Write to a File
+
+//	 public static void main(String[] args)
+//
+//	    {
+//	        // Writing Text File also
+//	        // Exception Handling
+//	        try {
+//
+//	            FileWriter Writer = new FileWriter("myfile.txt");
+//
+//	            // Writing File
+//	            Writer.write("Files in Java are seriously good!!");
+//	            Writer.close();
+//	            
+//	            System.out.println("Successfully written.");
+//	        }
+//
+//	        // Exception Thrown
+//	        catch (IOException e) {
+//	            System.out.println("An error has occurred.");
+//	            e.printStackTrace();
+//	        }
+//	    }
+//	 
+	
+	
+//	3. Read from a File
+//	public static void main(String[] args) {
+//		try {
+//			File Obj = new File("myFile.txt");
+//			Scanner Reader = new Scanner(Obj); 
+//			
+//			while(Reader.hasNextLine()) {
+//				String data = Reader.nextLine();
+//				System.out.println(data);
+//			}
+//			
+//		}catch(FileNotFoundException e){
+//			System.out.println("An error has occurred. "+ e);
+//		}
+//	}
+//	 
+//	4. Delete a File
+	
+	
+	public static void main(String[] args)
+    {
+        File Obj = new File("myfile.txt");
+        
+        // Deleting File
+        if (Obj.delete()) {
+            System.out.println("The deleted file is : " + Obj.getName());
+        }
+        else {
+            System.out.println(
+                "Failed in deleting the file.");
+        }
+    }
+}
