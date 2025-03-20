@@ -1,0 +1,17 @@
+2) Problem Statement: Student Management System Using HashMap in Java
+Objective:
+Develop a Java program that manages student records using a HashMap where each student’s ID is the key, and the corresponding Student object is the value. The system should support various operations such as adding, updating, deleting, searching, and displaying student details. Additionally, implement a business logic to determine students eligible for a scholarship based on their marks.
+
+1.	Create a Student class with the following attributes:
+•	id (Integer) → Unique student ID
+•	name (String) → Student’s full name
+•	course (String) → Course enrolled
+•	marks (Double) → Average marks obtained
+2.	Implement the following operations using a HashMap<Integer, Student>:
+•	Add Student – Add a new student to the HashMap.
+•	Update Student – Modify a student’s details using their ID.
+•	Delete Student – Remove a student using their ID.
+•	Search Student – Retrieve student details using their ID.
+•	Display All Students – Print all student records stored in the HashMap.
+3.	Business Logic:
+•	Implement a method getScholarshipEligibleStudents() that checks all students with marks greater than or equal to 85 and prints their details as eligible for a scholarship.
