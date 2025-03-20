@@ -1,0 +1,19 @@
+Problem Statement: Employee Management System Using File Handling in Java
+Objective:
+Develop a Java program that manages employee records using file handling. The system should store employee objects in a file and support operations such as adding, updating, deleting, searching, and displaying employee details. Additionally, implement a business logic to determine employees eligible for a promotion based on their experience.
+
+Requirements:
+1.	Create an Employee class with the following attributes:
+•	id (Integer) → Unique employee ID
+•	name (String) → Employee name
+•	designation (String) → Employee role
+•	salary (Double) → Employee salary
+•	experience (Integer) → Years of experience
+2.	Implement the following operations using file handling (ObjectOutputStream & ObjectInputStream):
+•	Add Employee – Store new employee details in the file.
+•	Update Employee – Modify employee details in the file.
+•	Delete Employee – Remove an employee entry from the file.
+•	Search Employee – Retrieve employee details from the file using their ID.
+•	Display All Employees – Read and print all employee records from the file.
+3.	Business Logic:
+•	Implement a method getPromotionEligibleEmployees() that reads all employees from the file and displays those with experience greater than or equal to 5 years as eligible for promotion.
