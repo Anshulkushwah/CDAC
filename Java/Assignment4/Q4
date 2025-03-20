@@ -1,27 +1,254 @@
-Problem Statement: Employee Payroll Management System with Total Compensation Calculation
-Objective:
-Develop a Java program that models an Employee Payroll Management System using Object-Oriented Programming (OOP) principles such as classes and objects, constructors, inheritance (hierarchical), abstract classes, and interfaces. The system should manage different types of employees (permanent and contract-based) and include a business logic to:
-1.	Calculate total salary expenses (compensation) for the company.
-2.	Determine employees eligible for a bonus.
 
-Requirements:
-1.	Create an abstract class Employee with the following attributes and methods:
-•	Attributes:
-•	empId (Integer) → Unique Employee ID
-•	name (String) → Employee name
-•	designation (String) → Job role
-•	salary (Double) → Monthly salary
-•	Constructor to initialize the attributes.
-•	Abstract Method: calculateSalary() → Must be implemented by child classes.
-2.	Create two subclasses PermanentEmployee and ContractEmployee that inherit from Employee:
-•	PermanentEmployee: Has additional benefits such as medical allowance.
-•	ContractEmployee: Receives payment based on the number of working hours.
-•	Both subclasses should override the calculateSalary() method.
-3.	Implement an interface BonusEligibility that has a method:
-•	isEligibleForBonus() → Determines if an employee is eligible for a bonus if salary > 50000.
-•	Both PermanentEmployee and ContractEmployee should implement this interface.
-4.	Demonstrate Hierarchical Inheritance:
-•	Superclass Employee has two subclasses PermanentEmployee and ContractEmployee, demonstrating hierarchical inheritance.
-5.	Business Logic:
-•	Implement a method getBonusEligibleEmployees() that filters out employees eligible for a bonus (salary > 50000) and displays them.
-•	Implement a method calculateTotalCompensation() that calculates the total salary expenses for the company by summing up the salaries of all employees.
+
+public abstract class Employee implements BonusEligibility {
+	
+	int empid;
+	String name;
+	String designation;
+	double salary;
+	
+	public Employee(int empid, String name, String designation,double salary) {
+		this.empid = empid;
+		this.name = name;
+		this.designation = designation;
+		this.salary = salary;
+	}
+	
+	public abstract void calculateSalary();
+	
+	// Getters
+    public int getEmpId() {
+        return empid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    @Override
+    public boolean isEligibleForBonus(double sal) {
+        return sal > 50000;
+    }
+
+}
+
+-------------------------------------------------------------------------------------------------------
+
+
+public interface BonusEligibility  {
+	
+	boolean isEligibleForBonus(double sal);
+
+}
+
+---------------------------------------------------------------------------------------------------------
+
+
+
+public class PermanentEmployee extends Employee implements BonusEligibility {
+	
+	double medicalAllowance;
+	double tempSal = 0;
+
+	public PermanentEmployee(int empid, String name, String designation,double salary,double medicalAllowance) {
+		super(empid, name, designation,salary);
+		this.medicalAllowance = medicalAllowance;
+	}
+	
+	@Override
+	public void calculateSalary() {
+		salary += medicalAllowance;
+		System.out.println(this.name+" : Salary calculate successfully");
+	}
+//	
+//	@Override
+//    public boolean isEligibleForBonus(double sal) {
+//        return sal > 50000;
+//    }
+
+}
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+public class ContractEmployee extends Employee implements BonusEligibility {
+	
+	int workingHours;
+    double hourlyRate;
+    boolean EligibleForBonus = false;
+
+	public ContractEmployee(int empid, String name, String designation,int workingHours, double hourlyRate) {
+		super(empid, name, designation,0);
+		this.workingHours = workingHours;
+        this.hourlyRate = hourlyRate;
+        this.EligibleForBonus = isEligibleForBonus(workingHours*hourlyRate);
+        
+	}
+	
+	@Override
+	public void calculateSalary() {
+		salary = workingHours * hourlyRate;
+		this.EligibleForBonus = isEligibleForBonus(salary);
+		System.out.println(this.name+" : Salary calculate successfully");
+		}
+
+//	@Override
+//	public boolean isEligibleForBonus(double sal) {
+//        return sal > 50000;
+//    }
+
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+import java.util.ArrayList;
+
+public class PayrollManagementSystem  {
+
+	
+	private ArrayList<Employee> employees;
+
+    // Constructor
+    public PayrollManagementSystem() {
+        employees = new ArrayList<>();
+    }
+
+    // Add employee to the list
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+    }
+    
+    public ArrayList<Employee> getBonusEligibleEmployees() {
+    	ArrayList<Employee> eligibleEmployees = new ArrayList<>();
+        for (Employee employee : employees) {
+            if (employee.isEligibleForBonus(employee.getSalary())) { 
+                eligibleEmployees.add(employee);
+            }
+        }
+        return eligibleEmployees;
+    }
+
+    
+ // Calculate total compensation
+    public double calculateTotalCompensation() {
+        double totalCompensation = 0;
+        for (Employee employee : employees) {
+            totalCompensation += employee.getSalary();
+        }
+        return totalCompensation;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		PayrollManagementSystem PMS = new PayrollManagementSystem();
+
+        // Creating employees
+        PermanentEmployee p1 = new PermanentEmployee(1, "Alice", "Manager", 60000, 5000);
+        PermanentEmployee p2 = new PermanentEmployee(2, "Bob", "Engineer", 45000, 4000);
+        ContractEmployee c1 = new ContractEmployee(3, "Charlie", "Consultant", 160, 400);
+
+        // Adding employees to the system
+        p1.calculateSalary();
+        p2.calculateSalary();
+        c1.calculateSalary();
+        PMS.addEmployee(p1);
+        PMS.addEmployee(p2);
+        PMS.addEmployee(c1);
+
+        // Displaying bonus-eligible employees
+        System.out.println("Employees eligible for bonus:");
+        
+        for (Employee emp : PMS.getBonusEligibleEmployees()) {
+            System.out.println(emp.getName() + " - " + emp.getDesignation());
+        }
+
+        // Displaying total compensation
+        System.out.println("Total Company Compensation: " + PMS.calculateTotalCompensation());
+		
+
+	}
+
+}
+import java.util.ArrayList;
+
+public class PayrollManagementSystem  {
+
+	
+	private ArrayList<Employee> employees;
+
+    // Constructor
+    public PayrollManagementSystem() {
+        employees = new ArrayList<>();
+    }
+
+    // Add employee to the list
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+    }
+    
+    public ArrayList<Employee> getBonusEligibleEmployees() {
+    	ArrayList<Employee> eligibleEmployees = new ArrayList<>();
+        for (Employee employee : employees) {
+            if (employee.isEligibleForBonus(employee.getSalary())) { 
+                eligibleEmployees.add(employee);
+            }
+        }
+        return eligibleEmployees;
+    }
+
+    
+ // Calculate total compensation
+    public double calculateTotalCompensation() {
+        double totalCompensation = 0;
+        for (Employee employee : employees) {
+            totalCompensation += employee.getSalary();
+        }
+        return totalCompensation;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		PayrollManagementSystem PMS = new PayrollManagementSystem();
+
+        // Creating employees
+        PermanentEmployee p1 = new PermanentEmployee(1, "Alice", "Manager", 60000, 5000);
+        PermanentEmployee p2 = new PermanentEmployee(2, "Bob", "Engineer", 45000, 4000);
+        ContractEmployee c1 = new ContractEmployee(3, "Charlie", "Consultant", 160, 400);
+
+        // Adding employees to the system
+        p1.calculateSalary();
+        p2.calculateSalary();
+        c1.calculateSalary();
+        PMS.addEmployee(p1);
+        PMS.addEmployee(p2);
+        PMS.addEmployee(c1);
+
+        // Displaying bonus-eligible employees
+        System.out.println("Employees eligible for bonus:");
+        
+        for (Employee emp : PMS.getBonusEligibleEmployees()) {
+            System.out.println(emp.getName() + " - " + emp.getDesignation());
+        }
+
+        // Displaying total compensation
+        System.out.println("Total Company Compensation: " + PMS.calculateTotalCompensation());
+		
+
+	}
+
+}
