@@ -1,0 +1,27 @@
+Problem Statement: Employee Payroll Management System with Total Compensation Calculation
+Objective:
+Develop a Java program that models an Employee Payroll Management System using Object-Oriented Programming (OOP) principles such as classes and objects, constructors, inheritance (hierarchical), abstract classes, and interfaces. The system should manage different types of employees (permanent and contract-based) and include a business logic to:
+1.	Calculate total salary expenses (compensation) for the company.
+2.	Determine employees eligible for a bonus.
+
+Requirements:
+1.	Create an abstract class Employee with the following attributes and methods:
+•	Attributes:
+•	empId (Integer) → Unique Employee ID
+•	name (String) → Employee name
+•	designation (String) → Job role
+•	salary (Double) → Monthly salary
+•	Constructor to initialize the attributes.
+•	Abstract Method: calculateSalary() → Must be implemented by child classes.
+2.	Create two subclasses PermanentEmployee and ContractEmployee that inherit from Employee:
+•	PermanentEmployee: Has additional benefits such as medical allowance.
+•	ContractEmployee: Receives payment based on the number of working hours.
+•	Both subclasses should override the calculateSalary() method.
+3.	Implement an interface BonusEligibility that has a method:
+•	isEligibleForBonus() → Determines if an employee is eligible for a bonus if salary > 50000.
+•	Both PermanentEmployee and ContractEmployee should implement this interface.
+4.	Demonstrate Hierarchical Inheritance:
+•	Superclass Employee has two subclasses PermanentEmployee and ContractEmployee, demonstrating hierarchical inheritance.
+5.	Business Logic:
+•	Implement a method getBonusEligibleEmployees() that filters out employees eligible for a bonus (salary > 50000) and displays them.
+•	Implement a method calculateTotalCompensation() that calculates the total salary expenses for the company by summing up the salaries of all employees.
