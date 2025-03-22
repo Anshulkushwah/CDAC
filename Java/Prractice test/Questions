@@ -1,0 +1,46 @@
+Duration: 1 Hour Total Marks: 30 Marks
+• Part A: Class Creation and Object Initialization – 10 Marks
+• Part B: File Write and Read Operations – 10 Marks
+• Part C: Searching, Removing, and Updating – 10 Marks
+❖ Problem Statement:
+Write a Java menu-driven program to manage Student records using an ArrayList and 
+store/retrieve the data from a text file named students.txt.
+Task Requirements:
+1. Create a class called Student with the following instance variables:
+o studentId (int)
+o name (String)
+o course (String)
+o marks (double)
+2. Add 5 students to an ArrayList and perform the following operations:
+o Save to File: Write all student details to a file (students.txt) in a formatted 
+manner.
+o Read from File: Read and display the student data from the file.
+o Find Student by ID: Allow the user to search for a student by studentId and 
+display their details.
+o Remove Student: Remove a student from the ArrayList and update the file.
+o Update Marks: Update the marks of a student and save the changes to the 
+file.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Duration: 1 Hour Total Marks: 30 Marks
+• Part A: Class Creation and Object Initialization – 10 Marks
+• Part B: Sorting and Removal Logic – 10 Marks
+• Part C: Category Update and Display – 10 Marks
+Problem Statement:
+Create a Java menu-driven program to manage Movie details using an ArrayList.
+Task Requirements:
+1. Create a class called Movie with the following instance variables:
+o movieName (String)
+o director (String)
+o rating (double)
+o duration (int) // Duration in minutes
+o category (String, initially null)
+2. Add 5 movies to the ArrayList with sample data.
+3. Display details of all movies.
+4. Sort the movies by rating in descending order.
+5. Remove a movie if its rating is less than 5.0.
+6. Update the category:
+o If the duration is more than 150 minutes, set category to "Blockbuster".
+o Otherwise, set category to "Regular".
