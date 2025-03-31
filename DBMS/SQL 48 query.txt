@@ -1,0 +1,227 @@
+use dac_2025;
+
+-- ----------------------1--------------------------
+Select empname, empcode , desigcode from emp;
+
+-- ------------------------2---------------------------- 
+
+Select deptname, budget from dept;
+
+-- ---------------------------3---------------------------
+
+SELECT emp.empname, dept.deptname
+FROM emp
+ JOIN dept ON emp.deptcode = dept.deptcode;
+
+-- ---------------------------------4-----------------------------
+Select empname from emp  where supcode is null ;
+
+-- -------------------------------5-----------------------------
+
+SELECT empname FROM emp WHERE supcode IN (SELECT empcode FROM emp WHERE supcode IS NULL);
+
+-- ---------------------6-------------------------
+
+SELECT empname, joindate FROM emp WHERE joindate = (SELECT MIN(joindate)FROM emp);
+
+-- --------------------- 7 ---------------------------
+
+SELECT empname ,birthdate
+FROM emp 
+WHERE DATE_ADD(birthdate, INTERVAL 60 YEAR) = (
+    SELECT MIN(DATE_ADD(birthdate, INTERVAL 60 YEAR)) 
+    FROM emp
+    WHERE DATE_ADD(birthdate, INTERVAL 60 YEAR) > CURDATE()
+);
+
+-- --------------------- 8 ---------------------------
+
+SELECT e.empname AS department_manager, d.deptname
+FROM emp e
+JOIN dept d ON e.deptcode = d.deptcode
+WHERE e.desigcode = (
+    SELECT desigcode
+    FROM desig
+    WHERE designame = 'Manager'
+);
+
+-- --------------------9------------------
+SELECT COUNT(e.empname) AS employee_count, d.deptname
+FROM emp e
+JOIN dept d ON e.deptcode = d.deptcode
+WHERE d.deptname IN ('accounts', 'personal', 'purchase')
+GROUP BY d.deptname;
+
+
+-- ------------------10------------------------
+SELECT e.empname, d.deptname FROM emp e
+JOIN dept d ON e.deptcode = d.deptcode
+WHERE d.deptname IN ('accounts', 'personal');
+
+-- ------------------11---------------
+SELECT e.empname, d.deptname FROM emp e JOIN dept d ON e.deptcode = d.deptcode WHERE d.deptname IN ('accounts', 'personal');
+
+-- -------------------- 12 ----------------------------------
+SELECT e.empname, d.deptname
+FROM emp e
+JOIN dept d ON e.deptcode = d.deptcode
+WHERE d.deptname = 'accounts'
+  AND e.empcode NOT IN (
+      SELECT e1.empcode
+      FROM emp e1
+      JOIN dept d1 ON e1.deptcode = d1.deptcode
+      WHERE d1.deptname = 'personal'
+  );
+
+-- --------------------13--------------------------
+Select empname from emp where birthdate = (SELECT MAX(birthdate)FROM emp)LIMIT 1;
+
+-- --------------------14-------------------------------
+
+select empcode,empname from emp where basicpay != 12400;
+
+-- ------------------- 15 --------------------------
+select empcode,empname from emp where basicpay between 11000 and 12000 ;
+
+-- -------------------16-------------------------
+select empcode,empname from emp where basicpay not between 11000 and 12000 ;
+
+-- ---------------- 17 ---------------------------
+
+SELECT e.empname, s.allow, s.date FROM emp e JOIN salary s ON e.empcode = s.empcode
+ WHERE s.allow BETWEEN 1000 AND 1500 AND s.date BETWEEN '2012-01-01' AND '2012-01-31';
+
+-- ------------------------18--------------------------
+Select empname from emp where (empname)like '%i' or (empname) like '%y' ;
+
+-- ------------------------19----------------------------
+select desigcode,timestampdiff(year,joindate,curdate()) as experience  from emp where timestampdiff(year,joindate,curdate()) >=25;
+
+-- ------------------------20 -----------------------------
+
+SELECT empname FROM emp WHERE desigcode = 'SLMN' 
+AND TIMESTAMPDIFF(YEAR, joindate, CURDATE()) BETWEEN 20 AND 30;
+
+-- -----------------------21-----------------------
+Select s.basic as basicSalary, s.basic/2 as halfBasicSal from emp e JOIN salary s on s.empcode = e.empcode;
+
+-- ----------------------22---------------------------
+-- (Hint: Takehome-pay = basic + allowance - deductions)
+
+Select e.empname, (s.basic + s.allow - s.deduct) as Takehomepay from emp e JOIN salary s on s.empcode = e.empcode;
+
+-- ---------------------23-------------------------------
+
+SELECT e.empname, (s.basic + s.allow - s.deduct) AS Takehomepay FROM emp e JOIN salary s ON s.empcode = e.empcode
+WHERE e.deptcode = (SELECT d.deptcode FROM dept d WHERE d.deptname = 'Accounts');
+
+-- -------------------- 24 --------------------------------
+
+Select empname , timestampdiff(year,birthdate,curdate()) as Age from emp;
+
+
+-- --------------------- 25 ---------------------------------
+
+SELECT e.empname, TIMESTAMPDIFF(YEAR, e.birthdate, CURDATE()) AS age FROM emp e
+JOIN dept d ON e.deptcode = d.deptcode WHERE d.deptname = 'Accounts' ORDER BY age ASC, e.empname ASC;
+
+-- ------------------- 26 --------------------------------------
+
+SELECT COUNT(*) FROM emp WHERE supcode = (SELECT empcode FROM emp WHERE empname = 'Reddy'); 
+
+-- ---------------------27------------------------------
+select empcode,empname,count(emp.supcode) as count from emp group by empcode,empname 
+having count(emp.supcode)>=1 order by count(emp.supcode) asc;
+
+-- ----------------------- 28 ---------------------------
+SELECT e.empname FROM emp e JOIN emp s ON e.empcode = s.supcode GROUP BY e.empname HAVING COUNT(s.empcode) >= 3;
+
+-- ----------------------------29 ----------------------
+SELECT desigcode, MIN(basicpay) AS min_salary, MAX(basicpay) AS max_salary FROM emp GROUP BY desigcode;
+
+-- -------------------------------30 ------------------------
+SELECT e.empname AS emp, s.empname AS Supervisor FROM emp e LEFT JOIN emp s ON e.supcode = s.empcode;
+
+-- ----------------------------31--------------------------
+SELECT e.empname AS Supervisor, COUNT(s.empcode) AS Subordinates FROM emp e  
+JOIN emp s ON e.empcode = s.supcode  GROUP BY e.empname HAVING COUNT(s.empcode) > 3;
+
+-- -------------------------------32-------------------------
+CREATE TABLE promotions (
+    pid INT AUTO_INCREMENT PRIMARY KEY,
+    empcode VARCHAR(15), 
+    pdate DATE,
+    FOREIGN KEY (empcode) REFERENCES emp(empcode) ON DELETE CASCADE
+);
+
+INSERT INTO promotions (emp_code, promotion_date) VALUES
+(7369, '1990-06-15'),
+(7499, '1991-03-12'),
+(7521, '1992-07-21'),
+(7566, '1991-09-10'),
+(7698, '1993-04-05'),
+(7782, '1994-11-30'),
+(7839, '1990-02-20'),
+(7900, '1991-08-14'),
+(7902, '1995-05-17'),
+(7934, '1991-12-10');
+
+SELECT empname FROM emp WHERE empcode NOT IN (SELECT empcode FROM promotions);
+
+
+-- ---------------------------33---------------------------------
+Select empcode, count(*) AS num_promotions FROM promotions Group BY empcode ORDER BY num_promotions DESC LIMIT 1;
+
+-- --------------------------- 34 -----------------------------
+SELECT empname FROM emp WHERE empcode IN (SELECT empcode FROM promotions WHERE YEAR(pdate) = 1991);
+
+-- -----------------------------35-------------------------------
+
+SELECT d.deptname, d.budget, SUM(e.basicpay) AS total_salary FROM emp e 
+JOIN dept d ON e.deptcode = d.deptcode GROUP BY d.deptname;
+
+-- ---------------------36----------------------
+SELECT UPPER(empname) FROM emp;
+
+-- --------------------------------37-------------
+
+SELECT empname FROM emp WHERE basicpay > (SELECT basicpay FROM emp WHERE empname = 'Jain');
+
+-- -------------------------------38--------------------
+SELECT empname, basicpay from emp where basicpay > (SELECT max(basicpay) from emp where basicpay between 11000 AND 12000);
+
+-- -------------------------------39-------------------
+SELECT empname, basicpay from emp where basicpay > (
+SELECT AVG(basicpay) as AvgPayOut FROM emp) order by basicpay ASC;
+
+-- -----------------------------40------------------
+SELECT empname, basicpay FROM emp WHERE basicpay = (SELECT MAX(basicpay) FROM emp);
+
+-- ------------------------------------41---------------------
+SELECT empname, basicpay FROM emp WHERE basicpay < (SELECT MAX(basicpay) FROM emp);
+
+-- --------------------------------------------42-------------------
+SELECT d.deptname, MAX(e.basicpay) as maxSal from emp e join dept d on e.deptcode = d.deptcode group by d.deptname;
+
+-- -----------------------------------43 ------------------------
+SELECT empname, basicpay AS secMaxSal FROM emp WHERE basicpay = (SELECT MAX(basicpay) FROM emp WHERE basicpay < (SELECT MAX(basicpay) FROM emp));
+
+-- -------------------------------------44-------------------------
+SELECT empname, basicpay FROM emp
+WHERE basicpay = (SELECT DISTINCT basicpay FROM emp ORDER BY basicpay DESC LIMIT 1 OFFSET 4);
+
+-- -------------------------------------45------------------------
+SELECT empname, deptcode FROM emp WHERE sex = 'Female' 
+AND basicpay = (SELECT MAX(basicpay) FROM emp WHERE sex = 'Female');
+
+-- -------------------------------------46----------------------------
+SELECT empname FROM emp WHERE sex = 'Male' 
+AND basicpay > ANY (SELECT basicpay FROM emp WHERE sex = 'Female');
+
+-- --------------------------------------47------------------------
+SELECT d.deptname FROM dept d JOIN emp e ON d.deptcode = e.deptcode 
+GROUP BY d.	deptname HAVING AVG(e.basicpay) > (SELECT AVG(basicpay) FROM emp);
+
+-- -------------------------------------------------48--------------------
+SELECT empname FROM emp WHERE basicpay < (SELECT AVG(basicpay) 
+FROM emp WHERE deptcode = (SELECT deptcode FROM dept WHERE deptname = 'Accounts'));
