@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentProfile</title>
+    
+</head>
+<!-- <body>
+
+
+    <b>Student Profile</b>
+    <h1>Anshul Kushwah</h1>
+    <img src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg">
+    <ul>
+        <div>Age</div>
+        <li>22</li>
+        <br/>
+        <div>Course</div>
+        <li>CDAC</li>
+        <br/>
+        <div>Roll Number</div>
+        <li>0863cs191025</li>
+        <br/>
+        <div>Email Address</div>
+        <li>msgforanshul@gmail.com</li>
+    </ul>
+
+    <table border="2px">
+        <thead>
+          <tr>
+            <th>Qualification</th>
+            <th>Institute</th>
+            <th>Year of Passing</th>
+            <th>Percentage %</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Btech</td>
+            <td>PIEMR</td>
+            <td>2023</td>
+            <td>72%</td>
+          </tr>
+        </tbody>
+    </table>
+    <br/>
+    <span>About me :</span>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia accusamus temporibus magni in eum veniam ratione, minima, sed totam repudiandae quas beatae iste fuga, natus inventore laboriosam sequi ad nam quia adipisci odit debitis ut! Cupiditate nisi minus ipsa iure tempore, soluta nemo provident omnis hic porro necessitatibus, sapiente deleniti!</p>  
+
+    <a href="https://github.com/anshulkushwah/" target="_blank">CheckOut My github</a>
+              
+</body> -->
+
+<body>
+    <header>My Portfolio</header>
+    <nav>
+       <span>About</span> 
+       <span>Education</span>
+       <span>Projects</span>
+       <span>Contact</span>
+    </nav>
+    <section>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, dolore laborum, ipsam expedita nam officiis aspernatur, itaque maiores ducimus non facilis repudiandae quas necessitatibus.</p>
+        <img width="100px" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+        <br/>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ziEzg-7OcF4?si=R3oatPKuFb2QpiCn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+    <br/>
+    <table border="2px">
+        <thead>
+          <tr>
+            <th>Qualification</th>
+            <th>Institute</th>
+            <th>Year of Passing</th>
+            <th>Percentage %</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Btech</td>
+            <td>PIEMR</td>
+            <td>2023</td>
+            <td>72%</td>
+          </tr>
+        </tbody>
+    </table>
+    <article>
+        <div>Project title</div>
+        <div>Kuch bhi</div>
+        <div>Short description</div>
+        <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci aliquid rem libero consequatur quisquam voluptatibus laboriosam necessitatibus, laborum commodi eaque.</div>
+        <a href="https://github.com/anshulkushwah/" target="_blank">CheckOut My github</a>
+    </article> 
+
+    <form>
+        <div>Name</div>
+        <input type="text">
+        <div>Mail</div>
+        <input type="email">
+        <br/> <br/>
+        <div>Message</div>
+        <textarea></textarea>
+        <br/> <br/>
+        <button>Submit</button>
+    </form>
+
+    <h2>&copy;Anshul kushwah</h2>
+</body>
+</html>
