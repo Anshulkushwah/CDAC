@@ -1,0 +1,271 @@
+// Question #1: 
+// ------------ 
+// Create a base class Shape with a virtual method area(). Then, create two derived classes, Circle and 
+// Rectangle, each overriding area() to compute and return their respective areas. 
+ 
+// In Circle, the area should be calculated as π * radius ** 2. 
+// In Rectangle, the area should be calculated as length * breadth. 
+// Demonstrate dynamic binding by creating an array of Shape* pointers and call the area() method for 
+// each shape.
+
+/*
+
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+class Shape{
+    public:
+    
+    virtual double area() = 0;
+    
+    virtual ~Shape() {}
+};
+
+class Circle : public Shape{
+    private:
+    double radius;
+    
+        
+    public:
+    Circle(double  r){
+        this->radius = r;
+    }
+
+    double area() override {
+        return M_PI * radius * radius;
+    }
+};
+
+class Rectangle : public Shape{
+   private:
+    double length; 
+    double breadth;
+    
+    public:
+    
+    Rectangle(double l, double b){
+        this->length = l;
+        this->breadth = b;
+    }
+    
+    double area() override {
+        return length * breadth;
+    }
+};
+
+int main() {
+    Circle* circle1 = new Circle(7.0);
+    Rectangle* rectangle1 = new Rectangle(5.0, 8.0);
+    
+    vector<Shape*> shapes;
+    
+    shapes.push_back(circle1);
+    shapes.push_back(rectangle1);
+    
+    
+    cout << "Demonstrating Dynamic Binding:" <<endl;
+    cout << "------------------------------" <<endl;
+
+    for (auto shape_ptr : shapes) {
+        cout << "Area: " << shape_ptr->area() <<endl;
+    }
+
+    cout << "------------------------------" <<endl;
+
+    for (auto shape_ptr : shapes) {
+        delete shape_ptr;
+    }
+    
+
+    return 0;
+}
+*/
+
+// Implement Integer class by overloading the comparison operators ==, !=, <, and > along with necessary 
+// constructors. 
+ 
+// Implement the == operator to compare two Integer objects for equality. 
+// Implement the != operator to check if two Integer objects are not equal. 
+// Implement the < and > operators to compare two Integer objects to see which one is greater or smaller. 
+ 
+// Example usage: 
+// Integer num1(10), num2(20); 
+// if (num1 < num2) { 
+// cout << "num1 is smaller than num2" << endl; 
+// } 
+// if (num1 == num2) { 
+// 'cout << "num1 is equal to num2" << 'endl;
+// }
+
+#include <iostream>
+
+using namespace std;
+
+class Integer{
+    private :
+    
+    int value;
+    
+    public : 
+    Integer(int num){
+        this->value = num;
+    }
+    
+    ~Integer(){}
+    
+    bool operator==(const Integer& other){
+        return this->value == other.value;
+    }
+    
+    bool operator!=(const Integer& other){
+        return this->value != other.value;
+    }
+    
+    Integer operator<(const Integer& other){
+        if(this->value <= other.value) return *this;
+        else return other;
+    }
+    
+    Integer operator>(const Integer& other){
+        if(this->value >= other.value) return *this;
+        else return other;
+    }
+    
+    int getValue() const {
+        return value;
+    }
+};
+
+// Define how to print Integer object
+ostream& operator<<(ostream& out, const Integer& obj) {
+    out << obj.getValue();
+    return out;
+}
+
+int main(){
+    Integer* ob1 = new Integer(5);
+    Integer* ob2 = new Integer(5);
+    cout<<"operator== : "<<(*ob1 == *ob2)<<endl;
+    cout<<"operator!= : "<<(*ob1 != *ob2)<<endl;
+    
+    Integer* ob3 = new Integer(6);
+    Integer* ob4 = new Integer(3);
+    cout<<"operator< : " << (*ob3 < *ob4)<<endl;
+    cout<<"operator> : " << (*ob3 > *ob4);
+    
+    return 0;
+    
+}
+
+--------------------------------------------------------------
+
+
+#include <iostream>
+using namespace std;
+
+class Engine {
+public:
+    Engine() {
+        cout << "Engine initialized" << endl;
+    }
+};
+
+class Vehicle {
+public:
+    Vehicle() {
+        cout << "Vehicle initialized" << endl;
+    }
+};
+
+class Car : public Engine, public Vehicle {
+public:
+    Car() {
+        cout << "Car initialized" << endl;
+    }
+};
+
+
+---------------------------------------------------------------
+
+
+#include <iostream>
+#include <limits>
+using namespace std;
+
+class Integer {
+private:
+    int value;
+
+public:
+    // Constructor
+    Integer(int val) {
+        value = val;
+    }
+
+    // Getter
+    int getValue() const {
+        return value;
+    }
+
+    // + operator: Integer + Integer
+    Integer operator+(const Integer& other) const {
+        long long result = (long long)value + other.value;
+        if (result > INT_MAX || result < INT_MIN) {
+            cout << "Addition Overflow!" << endl;
+            return Integer(0);
+        }
+        return Integer((int)result);
+    }
+
+    // + operator: Integer + int
+    Integer operator+(int num) const {
+        long long result = (long long)value + num;
+        if (result > INT_MAX || result < INT_MIN) {
+            cout << "Addition Overflow!" << endl;
+            return Integer(0);
+        }
+        return Integer((int)result);
+    }
+
+    // friend + operator: int + Integer
+    friend Integer operator+(int num, const Integer& obj) {
+        return obj + num;  // reuse member logic
+    }
+
+    // * operator: Integer * Integer
+    Integer operator*(const Integer& other) const {
+        long long result = (long long)value * other.value;
+        if (result > INT_MAX || result < INT_MIN) {
+            cout << "Multiplication Overflow!" << endl;
+            return Integer(0);
+        }
+        return Integer((int)result);
+    }
+
+    // * operator: Integer * int
+    Integer operator*(int num) const {
+        long long result = (long long)value * num;
+        if (result > INT_MAX || result < INT_MIN) {
+            cout << "Multiplication Overflow!" << endl;
+            return Integer(0);
+        }
+        return Integer((int)result);
+    }
+
+    // friend * operator: int * Integer
+    friend Integer operator*(int num, const Integer& obj) {
+        return obj * num;
+    }
+
+    // Print the value
+    friend ostream& operator<<(ostream& out, const Integer& obj) {
+        out << obj.value;
+        return out;
+    }
+};
