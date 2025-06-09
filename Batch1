@@ -1,0 +1,306 @@
+// Question #1: 
+// ------------ 
+// Create a base class Shape with a virtual method area(). Then, create two derived classes, Circle and 
+// Rectangle, each overriding area() to compute and return their respective areas. 
+ 
+// In Circle, the area should be calculated as π * radius ** 2. 
+// In Rectangle, the area should be calculated as length * breadth. 
+// Demonstrate dynamic binding by creating an array of Shape* pointers and call the area() method for 
+// each shape
+
+// #include <iostream>
+// #include <bits/stdc++.h>
+// #include <cmath>
+// using namespace std;
+
+// class Shape{
+    
+//     public:
+    
+//     Shape(){};
+    
+//     virtual double area() = 0;
+    
+//     virtual ~Shape(){};
+    
+// };
+
+// class Circle : public Shape{
+//     int radius;
+//     public: 
+    
+//     Circle(int r){
+//         this->radius = r;
+//     }
+    
+//     double area(){
+//         return M_PI*radius*radius;
+//     }
+    
+// };
+
+// class Rectangle : public Shape{
+//     int len;
+//     int bred;
+//     public: 
+    
+//     Rectangle(int l, int b){
+//         this->len = l;
+//         this->bred = b;
+//     }
+    
+//     double area(){
+//         return len*bred;
+//     }
+// };
+
+// int main(){
+    
+//     vector<Shape*>ans;
+    
+//     Shape *c1 = new Circle(2);
+//     Shape *r1 = new Rectangle(2,3);
+    
+//     ans.push_back(c1);
+//     ans.push_back(r1);
+    
+//     for(auto a : ans){
+//         cout<<a->area()<<endl;
+//     }
+    
+//     return 0;
+// }
+
+
+
+// Implement Integer class by overloading the comparison operators ==, !=, <, and > along with necessary 
+// constructors. 
+ 
+// Implement the == operator to compare two Integer objects for equality. 
+// Implement the != operator to check if two Integer objects are not equal. 
+// Implement the < and > operators to compare two Integer objects to see which one is greater or smaller. 
+ 
+// Example usage: 
+// Integer num1(10), num2(20); 
+// if (num1 < num2) { 
+// cout << "num1 is smaller than num2" << endl; 
+// } 
+// if (num1 == num2) { 
+// 'cout << "num1 is equal to num2" << 'endl; 
+// }
+
+// #include <iostream>
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// class Integer{
+//     int value;
+    
+//     public :
+//     Integer(int num){
+//         this->value = num;
+//     }
+    
+//     void operator==(Integer &other){
+//         if(this->value ==  other.value){
+//             cout<< "num1 is equal , TRUE !!!"<<endl;
+//         }
+//         else{
+//             cout<< "This is not equal , Wrong !!!"<<endl;
+//         }
+//     }
+//     void operator!=(Integer &other){
+//         if(this->value !=  other.value){
+//             cout<< "num1 is not equal , TRUE !!!"<<endl;
+//         }
+//         else{
+//             cout<< "This is equal , Wrong !!!"<<endl;
+//         }
+//     }
+    
+//     void operator<(Integer &other){
+//         if(this->value < other.value){
+//             cout<< "num1 is less then num2 , True !!!"<<endl;
+//         }
+//         else {
+//             cout<< "num2 is less then num1 , Wrong !!!"<<endl;
+//         }
+//     }
+//     void operator>(Integer &other){
+//         if(this->value > other.value){
+//             cout<< "num1 is greater then num2 , True !!!"<<endl;
+//         }
+//         else {
+//             cout<< "num2 is not greater then num1 , Wrong !!!"<<endl;
+//         }
+//     }
+// };
+
+
+// int main(){
+    
+//     Integer* obj1 = new Integer(5);
+//     Integer* obj2 = new Integer(5);
+//     Integer* obj3 = new Integer(6);
+//     Integer* obj4 = new Integer(2);
+//     *obj1 == *obj2;
+//     *obj1 != *obj3;
+//     *obj4 < *obj3;
+//     *obj3 > *obj1;
+
+//     // Don't forget to delete dynamically allocated memory
+//     delete obj1;
+//     delete obj2;
+//     delete obj3;
+//     delete obj4;
+    
+    
+//     return 0;
+// }
+
+// Question #1: 
+// ------------ 
+// Create two base classes Engine and Vehicle that have constructors that print "Engine initialized" and 
+// "Vehicle initialized", respectively. 
+// Create a derived class Car that inherits from both Engine and Vehicle and has a constructor that prints 
+// "Car initialized". 
+// Demonstrate how constructors are called when an object of Car is created
+
+// #include <iostream>
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// class Engine{
+    
+//     public : 
+//     Engine(){
+//         cout<<"Engine initialized"<<endl;
+//     }
+// };
+
+// class Vehicle{
+//     public : 
+//     Vehicle(){
+//         cout<<"Vehicle initialized"<<endl;
+//     }
+// };
+
+// class Car : public Engine, public Vehicle{
+    
+//     public : 
+//     Car(){
+//         cout<<"Car initialized";
+//     }
+// };
+
+// int main(){
+//     Car* car = new Car();
+    
+//     cout<<car << endl;
+// }
+
+
+// Create a class Integer that represents a simple integer. 
+// • Overload the + operators to perform arithmetic operations on Integer objects. 
+// • Ensure that when performing operations, the result remains within the bounds of the integer type (e.g., 
+// handle overflow for addition and multiplication). 
+ 
+// Example usage: 
+// Integer num1(10), num2(5); 
+// Integer resOne = num1 + num2; // sum should be 15 
+// Integer resTwo = num1 + 20; // sum should be 15 
+// Integer resThree = 10 * num2; // sum should be 15
+
+
+#include <iostream>
+#include <climits>
+using namespace std;
+
+class Integer {
+private:
+    int value;
+
+public:
+    // Constructor
+    Integer(int val) {
+        value = val;
+    }
+
+    // Getter
+    int getValue() const {
+        return value;
+    }
+
+    // + operator: Integer + Integer
+    Integer operator+(const Integer& other) const {
+        long long result = (long long)value + other.value;
+        if (result > INT_MAX || result < INT_MIN) {
+            cout << "Addition Overflow!" << endl;
+            return Integer(0);
+        }
+        return Integer((int)result);
+    }
+
+    // + operator: Integer + int
+    Integer operator+(int num) const {
+        long long result = (long long)value + num;
+        if (result > INT_MAX || result < INT_MIN) {
+            cout << "Addition Overflow!" << endl;
+            return Integer(0);
+        }
+        return Integer((int)result);
+    }
+
+    // friend + operator: int + Integer
+    friend Integer operator+(int num, const Integer& obj) {
+        return obj + num;  // reuse member logic
+    }
+
+    // * operator: Integer * Integer
+    Integer operator*(const Integer& other) const {
+        long long result = (long long)value * other.value;
+        if (result > INT_MAX || result < INT_MIN) {
+            cout << "Multiplication Overflow!" << endl;
+            return Integer(0);
+        }
+        return Integer((int)result);
+    }
+
+    // * operator: Integer * int
+    Integer operator*(int num) const {
+        long long result = (long long)value * num;
+        if (result > INT_MAX || result < INT_MIN) {
+            cout << "Multiplication Overflow!" << endl;
+            return Integer(0);
+        }
+        return Integer((int)result);
+    }
+
+    // friend * operator: int * Integer
+    friend Integer operator*(int num, const Integer& obj) {
+        return obj * num;
+    }
+
+    // Print the value
+    friend ostream& operator<<(ostream& out, const Integer& obj) {
+        out << obj.value;
+        return out;
+    }
+};
+
+
+int main() {
+    Integer num1(10), num2(5);
+    
+    Integer resOne = num1 + num2;   
+    Integer resTwo = num1 + 20;      
+    Integer resThree = 10 * num2;  
+    Integer resFour = num1 * 3000000;
+
+    cout << "resOne: " << resOne << endl;
+    cout << "resTwo: " << resTwo << endl;
+    cout << "resThree: " << resThree << endl;
+    cout << "resFour: " << resFour << endl;
+
+    return 0;
+}
